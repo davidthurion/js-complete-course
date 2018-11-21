@@ -517,6 +517,7 @@ for (let i = david.length - 1; i >= 0; i--) {
     Challenge 5
 */
 
+/*
 const john = {
   fullName: "John Smitjh",
   bills: [124, 48, 268, 180, 42],
@@ -586,3 +587,4 @@ if (john.avg > mark.avg) {
     mark.fullName + "'s family pays higher tips with an average of " + mark.avg
   );
 }
+*/

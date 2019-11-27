@@ -162,6 +162,29 @@ var UIController = (function () {
     expensesPercLabel: '.item__percentage'
   };
 
+  var formatNumber = function (number, type) {
+    /* 
+    + or -
+    1511,4567 => 1.511,46
+    */
+    var numberSplit, int, dec;
+
+    number = Math.abs(number);
+    number = number.toFixed(2);
+
+    numberSplit = number.split('.');
+    int = numberSplit[0];
+    dec = numberSplit[1];
+
+    if (int.length > 3) {
+      int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
+    }
+
+
+
+    return (type === 'exp' ? sign = '-' : sign = '+') + ' ' + int + '.' + dec;
+  };
+
   return {
     getInput: function () {
       return {
@@ -186,7 +209,7 @@ var UIController = (function () {
       // Replace the placeholder text with some actual data
       newHtml = html.replace('%id%', obj.id);
       newHtml = newHtml.replace('%description%', obj.description);
-      newHtml = newHtml.replace('%value%', obj.value);
+      newHtml = newHtml.replace('%value%', formatNumber(obj.value));
 
       // Insert the html into the DOM
       document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
@@ -210,9 +233,12 @@ var UIController = (function () {
     },
 
     displayBudget: function (object) {
-      document.querySelector(DOMStrings.budgetLabel).textContent = object.budget;
-      document.querySelector(DOMStrings.incomeLabel).textContent = object.totalInc;
-      document.querySelector(DOMStrings.expensesLabel).textContent = object.totalExp;
+
+      object.budget > 0 ? type = "inc" : type = "exp";
+
+      document.querySelector(DOMStrings.budgetLabel).textContent = formatNumber(object.budget, type);
+      document.querySelector(DOMStrings.incomeLabel).textContent = formatNumber(object.totalInc, 'inc');
+      document.querySelector(DOMStrings.expensesLabel).textContent = formatNumber(object.totalExp, 'exp');
 
 
       if (object.percentage > 0) {
@@ -239,6 +265,8 @@ var UIController = (function () {
         }
       });
     },
+
+
 
     getDOMStrings: function () {
       return DOMStrings;

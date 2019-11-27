@@ -168,22 +168,21 @@ var UIController = (function () {
     + or -
     1511,4567 => 1.511,46
     */
-    var numberSplit, int, dec;
+    var numberSplit, int, dec, type;
 
     number = Math.abs(number);
     number = number.toFixed(2);
 
     numberSplit = number.split('.');
     int = numberSplit[0];
-    dec = numberSplit[1];
 
     if (int.length > 3) {
       int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
     }
 
+    dec = numberSplit[1];
 
-
-    return (type === 'exp' ? sign = '-' : sign = '+') + ' ' + int + '.' + dec;
+    return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
   };
 
   return {
@@ -210,7 +209,7 @@ var UIController = (function () {
       // Replace the placeholder text with some actual data
       newHtml = html.replace('%id%', obj.id);
       newHtml = newHtml.replace('%description%', obj.description);
-      newHtml = newHtml.replace('%value%', formatNumber(obj.value));
+      newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
 
       // Insert the html into the DOM
       document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);

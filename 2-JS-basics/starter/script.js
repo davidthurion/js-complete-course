@@ -588,3 +588,44 @@ if (john.avg > mark.avg) {
   );
 }
 */
+
+const day = "saturday";
+
+switch (day) {
+  case "monday":
+    console.log("Plan course structure");
+    console.log("Go to coding meetup");
+    break;
+  case "tuesday":
+    console.log("Prepare theory video");
+    break;
+  case "wednesday":
+  case "thursday":
+    console.log("Write jokes");
+    break;
+  case "friday":
+    console.log("Record");
+    break;
+  case "saturday":
+  case "sunday":
+    console.log("Enjoy");
+    break;
+  default:
+    console.log("Unknown day");
+    break;
+}
+
+if (day === "monday") {
+  console.log("Plan course structure");
+  console.log("Go to coding meetup");
+} else if (day === "tuesday") {
+  console.log("Prepare theory video");
+} else if (day === "wednesday" || day === "thursday") {
+  console.log("Write jokes");
+} else if (day === "friday") {
+  console.log("Record");
+} else if (day === "saturday" || day === "sunday") {
+  console.log("Enjoy");
+} else {
+  console.log("Unknown day");
+}

@@ -589,7 +589,7 @@ if (john.avg > mark.avg) {
 }
 */
 
-const day = "saturday";
+/*const day = "saturday";
 
 switch (day) {
   case "monday":
@@ -628,4 +628,4 @@ if (day === "monday") {
   console.log("Enjoy");
 } else {
   console.log("Unknown day");
-}
+}*/

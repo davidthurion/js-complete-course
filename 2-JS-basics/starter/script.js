@@ -629,3 +629,8 @@ if (day === "monday") {
 } else {
   console.log("Unknown day");
 }*/
+
+/*const age = 16;
+age >= 18 ? console.log("ok") : console.log("nok");
+const drink = age >= 18 ? "wine" : "water";
+console.log(`I should drink ${drink}`);*/
